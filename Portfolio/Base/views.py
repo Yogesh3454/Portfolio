@@ -20,23 +20,23 @@ def contact(request):
             pass
         else:
             messages.error(request,'Name should be between 1 and 30 characters')
-            return render(request, 'home.html')
+            return render(request, 'index.html')
 
         if len(email)>1 and len(email)<30:
             pass
         else:
             messages.error(request,'Email should be between 1 and 30 characters')
-            return render(request, 'home.html')
+            return render(request, 'index.html')
 
         if len(number)>8 and len(number)<12:
             pass
         else:
             messages.error(request,'Invalid number try again')
-            return render(request, 'home.html')
+            return render(request, 'index.html')
 
         yog = models.Contact(name=name, email=email, number=number, content=content)
         yog.save()
         messages.success(request, 'Your message has been sent successfully')
         print('Data saved')
 
-    return render(request, 'home.html')
+    return render(request, 'index.html')
